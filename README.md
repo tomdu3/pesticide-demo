@@ -20,6 +20,34 @@ Look for these issues after enabling "Pesticide" mode:
 5.  **Unclipped Media**: The `hero-image` is taller than its container (`hero`), bleeding out into the header/footer space because the parent lacks `overflow: hidden`.
 6.  **Inline-Block Gaps**: The navigation links use `display: inline-block`, which introduces small whitespace gaps between items due to HTML formatting.
 
+## 🛠️ How to Fix These Issues
+
+Revealing the bugs is the first step; here is how to fix them for a robust layout:
+
+1.  **Fixed Height Overflow**:
+    - **Issue**: `height: 150px` on `.about-card`.
+    - **Fix**: Change to `min-height: 150px` or remove the fixed height entirely to allow the container to grow with its content. Use `padding` for internal spacing.
+
+2.  **Negative Margin Overlap**:
+    - **Issue**: `margin-bottom: -80px` on `.hero-content`.
+    - **Fix**: Remove negative margins. Use standard `padding` or `margin` on sections to create space. If overlap is desired for design, use `position: relative` with `top` offsets or `transform: translateY()` while ensuring the container's height accounts for the shift.
+
+3.  **Absolute Positioning Fail**:
+    - **Issue**: `.project-item::after` is `absolute` but `.project-item` is not `relative`.
+    - **Fix**: Add `position: relative;` to `.project-item`. This anchors the badge to the card instead of the viewport.
+
+4.  **Horizontal Scroll Breakout**:
+    - **Issue**: `flex-wrap: nowrap` on `.projects-grid`.
+    - **Fix**: Change to `flex-wrap: wrap;`. Also, ensure `flex-basis` (or `width`) is using responsive units like `%` or `vw`, or use `max-width: 100%` on items.
+
+5.  **Unclipped Media**:
+    - **Issue**: `img` is taller than `.hero-image` container.
+    - **Fix**: Add `overflow: hidden;` to the `.hero-image` container or set the `img` to `height: 100%; width: 100%; object-fit: cover;` to ensure it stays within its bounds.
+
+6.  **Inline-Block Gaps**:
+    - **Issue**: Whitespace in HTML between `inline-block` items.
+    - **Fix**: Switch the parent container (`.nav-links`) to `display: flex;`. Flexbox ignores whitespace between elements, providing precise control over spacing via `gap`.
+
 ## 🖥️ How to Run
 Simply open `index.html` in any modern web browser.
 
