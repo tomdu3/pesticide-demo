@@ -1,0 +1,185 @@
+/* Reset & Base */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f9f9f9;
+}
+
+/* Debug Mode Styles */
+body.debug * {
+    outline: 1px solid rgba(255, 0, 0, 0.5) !important;
+    background: rgba(255, 0, 0, 0.05) !important;
+}
+
+/* Header & Nav */
+header {
+    background: #fff;
+    padding: 1rem 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+/* BUG: Inline-block whitespace gap */
+.nav-links li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+}
+
+#toggle-debug {
+    padding: 8px 16px;
+    background: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+/* Hero Section */
+/* BUG: Fixed height that might not contain absolute children or large text */
+.hero {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    height: 450px; 
+    padding: 0 50px;
+}
+
+/* BUG: Negative margin to "style" it but causes structural overlap */
+.hero-content {
+    flex: 1;
+    margin-bottom: -80px; 
+    z-index: 2;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.hero-image {
+    flex: 1;
+    height: 100%;
+}
+
+/* BUG: Img larger than container but parent has no overflow hidden */
+.hero-image img {
+    height: 500px; 
+    object-fit: cover;
+}
+
+/* About Section */
+.about {
+    display: flex;
+    gap: 20px;
+    padding: 100px 50px 50px;
+    background: #eee;
+}
+
+/* BUG: Fixed height with overflowing text */
+.about-card {
+    flex: 1;
+    background: #fff;
+    padding: 20px;
+    height: 150px; 
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.about-card h2 {
+    margin-bottom: 10px;
+    color: #555;
+}
+
+/* Projects Section */
+.projects {
+    padding: 50px;
+}
+
+.section-title {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+/* BUG: Flex container with no wrap and large basis causing horizontal overflow */
+.projects-grid {
+    display: flex;
+    flex-wrap: nowrap; 
+    gap: 30px;
+}
+
+.project-item {
+    flex: 0 0 400px; 
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* BUG: Absolute element without relative parent */
+.project-item {
+    /* position: relative; */ /* Intentionally commented out */
+}
+
+.project-info {
+    padding: 15px;
+}
+
+/* Decorative element that looks okay but is positioned relative to body */
+.project-item::after {
+    content: "NEW";
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: gold;
+    padding: 2px 8px;
+    font-size: 0.7rem;
+    font-weight: bold;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 40px;
+    background: #333;
+    color: #fff;
+    margin-top: 50px;
+}
+
+.cta-btn {
+    padding: 12px 24px;
+    background: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 20px;
+}
