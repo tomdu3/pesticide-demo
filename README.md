@@ -49,7 +49,22 @@ Revealing the bugs is the first step; here is how to fix them for a robust layou
     - **Fix**: Switch the parent container (`.nav-links`) to `display: flex;`. Flexbox ignores whitespace between elements, providing precise control over spacing via `gap`.
 
 ## 🖥️ How to Run
+---
+### Directly From the Browser
 Simply open `index.html` in any modern web browser.
+
+### Through a Python `http.server`
+
+Run Python server freom within the root project directory:
+
+```bash
+cd pesticide-demo/
+python3 -m http.server
+```
+
+Simply open `localhost:8000/index.html` in any modern web browser.
+
+---
 
 Click the **"Toggle Pesticide"** button at the top right to reveal the hidden layout issues.
 
